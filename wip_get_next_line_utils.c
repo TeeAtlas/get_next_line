@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   wip_get_next_line_utils.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taboterm <taboterm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:28:59 by taboterm          #+#    #+#             */
-/*   Updated: 2022/11/07 14:59:05 by taboterm         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:21:29 by taboterm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,30 +41,42 @@ char	*ft_strchr(const char *str, int c)
 	return ((char *) 0);
 }
 
-char	*ft_strjoin(char *str1, char *str2)
+char	*ft_strjoin(char *str_a, char *str_b)
 {
 	size_t	i;
 	size_t	j;
 	char	*res;
 
-	if (str1 == 0)
+	if (str_a == 0)
 	{
-		str1 = (char *)malloc(sizeof(char) * 1);
-		str1[0] = '\0';
+		str_a = (char *)malloc(sizeof(char) * 1);
+		str_a[0] = '\0';
 	}
-	if (!str1 || !str2)
+	if (!str_a || !str_b)
 		return (NULL);
-	res = malloc(ft_strlen(str1) + ft_strlen(str2) + 1);
+	res = malloc(ft_strlen(str_a) + ft_strlen(str_b) + 1);
 	if (!res)
 		return (NULL);
 	i = -1;
 	j = 0;
-	if (str1)
-		while (str1[++i] != '\0')
-			res[i] = str1[i];
-	while (str2[j] != '\0')
-		res[i++] = str2[j++];
+	if (str_a)
+		while (str_a[++i] != '\0')
+			res[i] = str_a[i];
+	while (str_b[j] != '\0')
+		res[i++] = str_b[j++];
 	res[i] = '\0';
-	free(str1);
+	free(str_a);
 	return (res);
+}
+
+char	*gnl_new_line(char *str)
+{
+	long int	i;
+	long int	j;
+
+	i = 0;
+	while(str[i] && str[i] != '\n')
+		i++;
+	
+	
 }
