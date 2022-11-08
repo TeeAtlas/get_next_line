@@ -6,22 +6,34 @@
 /*   By: taboterm <taboterm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 18:32:10 by taboterm          #+#    #+#             */
-/*   Updated: 2022/11/08 17:01:14 by taboterm         ###   ########.fr       */
+/*   Updated: 2022/11/08 17:36:53 by taboterm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 char	*gnl_read_line(char *str_a)
 {
 	int		i;
 	char	*buffer;
 
-	buffer = (char *)malloc(())
-	
+	buffer = malloc(sizeof(char)*(BUFFER_SIZE + 1));
+	if (!buffer)
+		return (NULL);
+	i = 0;
+	while (!ft_strchr(str_a, '\n') && i != 0)
+	{
+		i = read(fd, buffer, BUFFER_SIZE);
+		if (!buffer)
+		{
+			free(buffer);
+			return (NULL);
+		}
+		buffer[i] = '\0';
+		str_a = ft_strjoin(str_a, buffer);
+	}
+	free(buffer);
+	return(str_a);
 }
 
 char	*gnl_output(char *str_a)
