@@ -6,7 +6,7 @@
 /*   By: taboterm <taboterm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:28:59 by taboterm          #+#    #+#             */
-/*   Updated: 2022/11/09 15:38:19 by taboterm         ###   ########.fr       */
+/*   Updated: 2022/11/09 18:02:37 by taboterm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-//strchr point to beginning of characher string 
-//this might be the buffer - ask
-
+/*strchr point to beginning of characher string 
+this might be the buffer - ask*/
 char	*ft_strchr(const char *str, int c)
 {
-	int			i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -68,4 +67,3 @@ char	*ft_strjoin(char *str_a, char *str_b)
 	free(str_a);
 	return (res);
 }
-

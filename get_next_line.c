@@ -6,7 +6,7 @@
 /*   By: taboterm <taboterm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 18:32:10 by taboterm          #+#    #+#             */
-/*   Updated: 2022/11/09 16:03:11 by taboterm         ###   ########.fr       */
+/*   Updated: 2022/11/09 18:43:50 by taboterm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ char	*gnl_output(char *str_a)
 		return (NULL);
 	if (str_a[i] && str_a[i] != '\0')
 		i++;
-	s = (char *)malloc(sizeof(char)*(i + 2));
+	s = (char *)malloc(sizeof(char) * (i + 2));
 	if (!s)
 		return (NULL);
 	i = 0;
 	while (str_a[i] && str_a[i] != '\0')
 	{
 		s[i] = str_a[i];
-		i++;	
+		i++;
 	}
 	if (str_a[i] == '\n')
 	{
@@ -49,14 +49,14 @@ char	*gnl_new_line(char *str_a)
 	char		*str;
 
 	i = 0;
-	while(str_a[i] && str_a[i] != '\n')
+	while (str_a[i] && str_a[i] != '\n')
 		i++;
 	if (str_a[i])
 	{
 		free(str_a);
-		return(NULL);
+		return (NULL);
 	}
-	str = (char *)malloc(sizeof(char)*(ft_strlen(str_a)));
+	str = (char *)malloc(sizeof(char) * (ft_strlen(str_a)));
 	if (!str)
 		return (NULL);
 	i++;
@@ -65,17 +65,16 @@ char	*gnl_new_line(char *str_a)
 		str[j++] = str_a[i];
 	str[j] = '\n';
 	free (str_a);
-	return (str); //does this return new string? Or pointer to new string?
-	
+	return (str);
 }
 
-char	*gnl_read_line(int	fd, char *str_a)
+char	*gnl_read_line(int fd, char *str_a)
+//buffer reads and stores line
 {
-	//buffer stores line
 	char	*buffer;
 	int		read_byte;
 
-	buffer = malloc(sizeof(char)*(BUFFER_SIZE + 1));
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
 	read_byte = 1;
@@ -91,15 +90,15 @@ char	*gnl_read_line(int	fd, char *str_a)
 		str_a = ft_strjoin(str_a, buffer);
 	}
 	free(buffer);
-	return(str_a);
+	return (str_a);
 }
 
 char	*get_next_line(int fd)
-{
 	//static char stores overhang
+{
 	static char	*str_a;
 	char		*str_b;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	str_a = gnl_read_line(fd, str_a);
@@ -110,41 +109,5 @@ char	*get_next_line(int fd)
 	}
 	str_b = gnl_output(str_a);
 	str_a = gnl_new_line(str_a);
-	return (str_b);		
+	return (str_b);
 }
-
-// int	main(void)
-// {
-// 	// this int is just the number the system uses to keep track of files
-// 	//every open file has a number and it's a file descriptor
-// 	int	fd;
-// 	int i;
-	
-// 	fd = fopen("narnia.txt", O_RDONLY);
-// 	i = 0;
-	
-// 	while (i < 5)
-// 	{
-// 		printf("\n i: %d the function output:|%s|\n", i, get_next_line(fd));
-// 		i++;
-// 	}
-// 	close(fd);
-// 	return(0);
-// }
-
-// int	main(void)
-// {
-// 	int		fd;
-// 	char	*line;
-
-// 	fd = open("narnia.txt", O_RDONLY);
-// 	while (1)
-// 	{
-// 		line = get_next_line(fd);
-// 		printf("%s", line);
-// 		if (line == NULL)
-// 			break ;
-// 		free(line);
-// 	}
-// 	return (0);
-// }
