@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taboterm <taboterm@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: taboterm <taboterm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 18:32:10 by taboterm          #+#    #+#             */
-/*   Updated: 2022/11/08 20:44:26 by taboterm         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:03:11 by taboterm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <fcntl.h>
 
 char	*gnl_output(char *str_a)
 {
@@ -55,7 +56,7 @@ char	*gnl_new_line(char *str_a)
 		free(str_a);
 		return(NULL);
 	}
-	str = (char *)malloc(sizeof(char)*(ft_strlen(str_a));
+	str = (char *)malloc(sizeof(char)*(ft_strlen(str_a)));
 	if (!str)
 		return (NULL);
 	i++;
@@ -70,6 +71,7 @@ char	*gnl_new_line(char *str_a)
 
 char	*gnl_read_line(int	fd, char *str_a)
 {
+	//buffer stores line
 	char	*buffer;
 	int		read_byte;
 
@@ -85,7 +87,7 @@ char	*gnl_read_line(int	fd, char *str_a)
 			free(buffer);
 			return (NULL);
 		}
-		buffer[i] = '\0';
+		buffer[read_byte] = '\0';
 		str_a = ft_strjoin(str_a, buffer);
 	}
 	free(buffer);
@@ -94,10 +96,11 @@ char	*gnl_read_line(int	fd, char *str_a)
 
 char	*get_next_line(int fd)
 {
+	//static char stores overhang
 	static char	*str_a;
 	char		*str_b;
 	
-	if (fd < 0 || BUFFER_SIZE <= 0);
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	str_a = gnl_read_line(fd, str_a);
 	if (!str_a)
@@ -110,40 +113,38 @@ char	*get_next_line(int fd)
 	return (str_b);		
 }
 
-int	main(void)
-{
-	// this int is just the number the system uses to keep track of files
-	//every open file has a number and it's a file descriptor
-	int	fd;
-	int i;
+// int	main(void)
+// {
+// 	// this int is just the number the system uses to keep track of files
+// 	//every open file has a number and it's a file descriptor
+// 	int	fd;
+// 	int i;
 	
-	fd = fopen("narnia.txt", O_RDONLY);
-	i = 0;
+// 	fd = fopen("narnia.txt", O_RDONLY);
+// 	i = 0;
 	
-	while (i < 5)
-	{
-		printf("\n i: %d the function output:|%s|\n", i, get_next_line(fd));
-		i++;
-	}
-	close(fd);
-	return(0);
-}
+// 	while (i < 5)
+// 	{
+// 		printf("\n i: %d the function output:|%s|\n", i, get_next_line(fd));
+// 		i++;
+// 	}
+// 	close(fd);
+// 	return(0);
+// }
 
-int	main(void)
-{
-	int		fd;
-	char	*line;
+// int	main(void)
+// {
+// 	int		fd;
+// 	char	*line;
 
-	fd = open("narnia.txt", O_RDONLY);
-	while (1)
-	{
-		line = get_next_line(fd);
-		printf("%s", line);
-		if (line == NULL)
-			break ;
-		free(line);
-	}
-	
-
-	return (0);
-}
+// 	fd = open("narnia.txt", O_RDONLY);
+// 	while (1)
+// 	{
+// 		line = get_next_line(fd);
+// 		printf("%s", line);
+// 		if (line == NULL)
+// 			break ;
+// 		free(line);
+// 	}
+// 	return (0);
+// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taboterm <taboterm@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: taboterm <taboterm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:28:59 by taboterm          #+#    #+#             */
-/*   Updated: 2022/11/08 18:59:48 by taboterm         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:38:19 by taboterm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,3 @@ char	*ft_strjoin(char *str_a, char *str_b)
 	return (res);
 }
 
-char	*gnl_new_line(char *str)
-{
-	long int	i;
-	long int	j;
-
-	i = 0;
-	while(str[i] && str[i] != '\n')
-		i++;
-	
-	
-}
