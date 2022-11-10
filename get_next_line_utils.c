@@ -17,27 +17,28 @@ size_t	ft_strlen(const char *str)
 	size_t	i;
 
 	i = 0;
-	while (str[i])
+	while (str[i] != '\0')
 		i++;
 	return (i);
 }
 
 /*strchr point to beginning of characher string 
-this might be the buffer - ask*/
-char	*ft_strchr(const char *str, int c)
+this might be the buffer - ask or does this search for 
+null terminator and new line*/
+char	*ft_strchr(char *str, int c)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	if (!str)
+		return (NULL);
+	while (str[i] != '\0')
 	{
 		if (str[i] == (char)c)
-			return ((char *)str + i);
+			return (&str[i]);
 		i++;
 	}
-	if (str[i] == (char)c)
-		return ((char *)str + i);
-	return ((char *) 0);
+	return (NULL);
 }
 
 char	*ft_strjoin(char *str_a, char *str_b)
@@ -53,7 +54,7 @@ char	*ft_strjoin(char *str_a, char *str_b)
 	}
 	if (!str_a || !str_b)
 		return (NULL);
-	res = (char *)malloc(ft_strlen(str_a) + ft_strlen(str_b) + 1);
+	res = (char *)malloc(sizeof(char) * (ft_strlen(str_a) + ft_strlen(str_b) + 1));
 	if (!res)
 		return (NULL);
 	i = -1;

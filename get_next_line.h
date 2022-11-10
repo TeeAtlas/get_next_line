@@ -6,7 +6,7 @@
 /*   By: taboterm <taboterm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 18:39:57 by taboterm          #+#    #+#             */
-/*   Updated: 2022/11/09 16:45:52 by taboterm         ###   ########.fr       */
+/*   Updated: 2022/11/10 12:10:50 by taboterm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,17 @@
 # include <stdio.h>
 
 size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *str, int c);
+char	*ft_strchr(char *str, int c);
 char	*ft_strjoin(char *str1, char *str2);
 char	*gnl_output(char *str_a);
 char	*gnl_read_line(int fd, char *str_a);
 char	*gnl_new_line(char *str_a);
 char	*get_next_line(int fd);
+int		main(void);
 
+/* -D flags a macro in the same way define would 
+work in the header*/
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4
+#  define BUFFER_SIZE 5
 # endif
 #endif

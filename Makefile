@@ -6,7 +6,7 @@
 #    By: taboterm <taboterm@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 19:32:54 by taboterm          #+#    #+#              #
-#    Updated: 2022/09/01 19:42:28 by taboterm         ###   ########.fr        #
+#    Updated: 2022/11/10 12:26:03 by taboterm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,10 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	/bin/rm -f *.o a.out
+	/bin/rm -f *.o a.out getnextline test
 	
 fclean: clean 
-	/bin/rm -f *.o a.out $(NAME)
+	/bin/rm -f *.o a.out getnextline test$(NAME)
 	
 re: fclean all
 
