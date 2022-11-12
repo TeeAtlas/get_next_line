@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taboterm <taboterm@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: taboterm <taboterm@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:28:59 by taboterm          #+#    #+#             */
-/*   Updated: 2022/11/10 11:51:10 by taboterm         ###   ########.fr       */
+/*   Updated: 2022/11/12 10:45:10 by taboterm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-/*strchr point to beginning of characher string 
-this might be the buffer - ask or does this search for 
-null terminator and new line*/
 char	*ft_strchr(char *str, int c)
 {
 	int	i;
@@ -49,12 +46,12 @@ char	*ft_strjoin(char *str_a, char *str_b)
 
 	if (str_a == 0)
 	{
-		str_a = (char *)malloc(sizeof(char) * 1);
+		str_a = (char *)malloc(1);
 		str_a[0] = '\0';
 	}
 	if (!str_a || !str_b)
 		return (NULL);
-	res = (char *)malloc(sizeof(char) * (ft_strlen(str_a) + ft_strlen(str_b) + 1));
+	res = malloc(ft_strlen(str_a) + ft_strlen(str_b) + 1);
 	if (!res)
 		return (NULL);
 	i = -1;

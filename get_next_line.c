@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taboterm <taboterm@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: taboterm <taboterm@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 18:32:10 by taboterm          #+#    #+#             */
-/*   Updated: 2022/11/10 12:08:36 by taboterm         ###   ########.fr       */
+/*   Updated: 2022/11/12 10:45:03 by taboterm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*gnl_output(char *str_a)
 		return (NULL);
 	while (str_a[i] != '\0' && str_a[i] != '\n')
 		i++;
-	s = (char *)malloc(sizeof(char) * (i + 2));
+	s = (char *)malloc(i + 2);
 	if (!s)
 		return (NULL);
 	i = 0;
@@ -54,7 +54,7 @@ char	*gnl_new_line(char *str_a)
 		free(str_a);
 		return (NULL);
 	}
-	str = (char *)malloc(sizeof(char) * (ft_strlen(str_a) - i + 1));
+	str = (char *)malloc((ft_strlen(str_a) - i + 1));
 	if (!str)
 		return (NULL);
 	i++;
@@ -69,22 +69,21 @@ char	*gnl_new_line(char *str_a)
 char	*gnl_read_line(int fd, char *str_a)
 {
 	char	*buffer;
-	int		read_byte;
+	int		i;
 
-	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buffer = (char *)malloc((BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
-	read_byte = 1;
-	while (!ft_strchr(str_a, '\n') && read_byte != 0)
+	i = 1;
+	while (!ft_strchr(str_a, '\n') && i != 0)
 	{
-
-		read_byte = read(fd, buffer, BUFFER_SIZE);
-		if (read_byte == -1)
+		i = read(fd, buffer, BUFFER_SIZE);
+		if (i == -1)
 		{
 			free(buffer);
 			return (NULL);
 		}
-		buffer[read_byte] = '\0'; 
+		buffer[i] = '\0';
 		str_a = ft_strjoin(str_a, buffer);
 	}
 	free(buffer);
@@ -100,10 +99,7 @@ char	*get_next_line(int fd)
 		return (0);
 	str_a = gnl_read_line(fd, str_a);
 	if (!str_a)
-	{
-		free(str_a);
 		return (NULL);
-	}
 	str_b = gnl_output(str_a);
 	str_a = gnl_new_line(str_a);
 	return (str_b);

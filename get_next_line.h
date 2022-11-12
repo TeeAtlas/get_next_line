@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taboterm <taboterm@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: taboterm <taboterm@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 18:39:57 by taboterm          #+#    #+#             */
-/*   Updated: 2022/11/10 12:10:50 by taboterm         ###   ########.fr       */
+/*   Updated: 2022/11/12 10:44:54 by taboterm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ char	*gnl_output(char *str_a);
 char	*gnl_read_line(int fd, char *str_a);
 char	*gnl_new_line(char *str_a);
 char	*get_next_line(int fd);
-int		main(void);
 
-/* -D flags a macro in the same way define would 
-work in the header*/
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5
 # endif
