@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: taboterm <taboterm@student.42wolfsburg.de> +#+  +:+       +#+         #
+#    By: taboterm <taboterm@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 19:32:54 by taboterm          #+#    #+#              #
-#    Updated: 2022/11/10 12:26:03 by taboterm         ###   ########.fr        #
+#    Updated: 2022/11/12 16:16:48 by taboterm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = get_next_line.a
 
-SRC = ft_strlen.c ft_strchr.c ft_strjoin.c
+SRC = get_next_line.c get_next_line_utils.c get_next_line.h main.c\
 
 OBJS = $(SRC:.c=.o)
 
@@ -27,10 +27,10 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	/bin/rm -f *.o a.out getnextline test
+	/bin/rm -f *.o *.a a.out
 	
 fclean: clean 
-	/bin/rm -f *.o a.out getnextline test$(NAME)
+	/bin/rm -f *.o *.a a.out$(NAME)
 	
 re: fclean all
 

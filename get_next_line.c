@@ -6,7 +6,7 @@
 /*   By: taboterm <taboterm@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 18:32:10 by taboterm          #+#    #+#             */
-/*   Updated: 2022/11/12 10:45:03 by taboterm         ###   ########.fr       */
+/*   Updated: 2022/11/12 14:57:02 by taboterm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,13 @@ char	*gnl_new_line(char *str_a)
 		return (NULL);
 	}
 	str = (char *)malloc((ft_strlen(str_a) - i + 1));
+	// allocation memory for overhang
+	// three steps in the whole get next line
+	// first step store string a in variable
+	// string a can be longer than actual line
+	//second step saving everythign unti new line character
+	// stor in string be
+	// string a includes over hang
 	if (!str)
 		return (NULL);
 	i++;
